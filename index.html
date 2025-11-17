@@ -7,8 +7,11 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; color: #333; }
     header { background: #222; color: #fff; padding: 20px; text-align: center; }
-    h1 { margin: 0; }
-    section { padding: 40px 20px; max-width: 900px; margin: auto; }
+    nav { background: #333; display: flex; justify-content: center; }
+    nav a { color: #fff; padding: 14px 20px; text-decoration: none; display: block; }
+    nav a:hover { background: #444; }
+    section { padding: 40px 20px; max-width: 900px; margin: auto; display: none; }
+    section.active { display: block; }
     .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .gallery-item { background: #fff; padding: 10px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
     .gallery-item img { width: 100%; border-radius: 8px; }
@@ -24,7 +27,14 @@
     <p>Custom handcrafted frames • Modern • Affordable • Local</p>
   </header>
 
-  <section id="photos">
+  <nav>
+    <a href="#gallery" onclick="showTab('gallery')">Gallery</a>
+    <a href="#pricing" onclick="showTab('pricing')">Prices</a>
+    <a href="#how" onclick="showTab('how')">How It Works</a>
+    <a href="#contact" onclick="showTab('contact')">Contact Us</a>
+  </nav>
+
+  <section id="gallery" class="active">
     <h2>Before & After Gallery</h2>
     <p>See how a floating frame transforms a canvas.</p>
     <div class="gallery">
@@ -59,6 +69,19 @@
     </table>
   </section>
 
+  <section id="how">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Measure your canvas (L × W × H).</li>
+      <li>Choose your frame thickness.</li>
+      <li>Receive a quote and accept.</li>
+      <li>Deliver frame to us / we do collections in Secunda / Trichardt area for extra fee / bubblewrap your canvas and send it via PostNet (fragile item).</li>
+      <li>Optionally, we can build the frame for you without your canvas and send you screws + instructions (no returns if frame does not fit).</li>
+      <li>We make the frame and send it back to you.</li>
+    </ol>
+    <p>Or, send us your photo and we can print it on the canvas size of your choice, build the frame, and send it to you.</p>
+  </section>
+
   <section id="contact">
     <h2>Contact</h2>
     <p>To book your frame or request a custom quote:</p>
@@ -70,5 +93,13 @@
   <footer>
     <p>© 2025 Canvas Floating Frames | Handcrafted in Secunda</p>
   </footer>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
+
